@@ -377,24 +377,27 @@ int main()
         TargetEmAll(FiveGSkinIt);
         delete FiveGSkinIt;
 
+    //Смартфоны с 5G
     cout << "Array class" << endl;
-    cout << endl << "Smartfone have 5G:" << endl;
+    cout << endl << "Smartfone only have 5G:" << endl;
     Iterator<Smartfone*>* FiveGIt = new SmartfoneFiveGDecorator(SmartfoneArray.GetIterator(), true);
     TargetEmAll(FiveGIt);
     delete FiveGIt;
 
-    cout << endl << "black smartfones:" << endl;
+    //Смартфоны чёрного цвета
+    cout << endl << "Black smartfones:" << endl;
     Iterator<Smartfone*>* SkinIt = new SmartfoneColorDecorator(SmartfoneArray.GetIterator(), mobileColor::Black);
     TargetEmAll(SkinIt);
     delete SkinIt;
 
+    //смартфоны чёрного цвета с 5G
     cout << endl << "black smartfone have 5G:" << endl;
     Iterator<Smartfone*>* haveFiveGIt =
         new SmartfoneFiveGDecorator(new SmartfoneColorDecorator(SmartfoneArray.GetIterator(), mobileColor::Black), true);
     TargetEmAll(haveFiveGIt);
     delete haveFiveGIt;
 
-    cout << endl << "black smartfone  skin have 5G using adapted iterator (another container):" << endl;
+    cout << endl << "black smartfone have 5G using adapted iterator (another container):" << endl;
     Iterator<Smartfone*>* adaptedIt = new ConstIteratorAdapter<std::list<Smartfone*>, Smartfone*>(&SmartfoneVector);
     Iterator<Smartfone*>* adaptedBlackIt = new SmartfoneFiveGDecorator(new SmartfoneColorDecorator(adaptedIt, mobileColor::Black), true);
     TargetEmAll(adaptedBlackIt);
